@@ -1,0 +1,22 @@
+apply plugin: "java"
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+[compileJava, compileTestJava]*.options*.encoding = "UTF-8"
+
+def versions = [
+	"websocket_api": "1.1",
+	"glassfish_websocket_client": "1.14",
+	"glassfish_websocket_container": "1.14",
+]
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile group: 'javax.websocket', name: 'javax.websocket-client-api', version: "${versions.websocket_api}"
+	compile group: 'org.glassfish.tyrus', name: 'tyrus-client', version: "${versions.glassfish_websocket_client}"
+	compile group: 'org.glassfish.tyrus', name: 'tyrus-container-grizzly-client', version: "${versions.glassfish_websocket_container}"
+}
